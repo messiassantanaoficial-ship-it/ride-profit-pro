@@ -12,9 +12,13 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedCombustivelRouteImport } from './routes/_authenticated/combustivel'
 import { Route as AuthenticatedCorridasRouteImport } from './routes/_authenticated/corridas'
 import { Route as AuthenticatedDashboardRouteImport } from './routes/_authenticated/dashboard'
 import { Route as AuthenticatedDesempenhoRouteImport } from './routes/_authenticated/desempenho'
+import { Route as AuthenticatedDespesasRouteImport } from './routes/_authenticated/despesas'
+import { Route as AuthenticatedManutencaoRouteImport } from './routes/_authenticated/manutencao'
+import { Route as AuthenticatedTaxasRouteImport } from './routes/_authenticated/taxas'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -30,6 +34,12 @@ const AuthRoute = AuthRouteImport.update({
   path: '/auth',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AuthenticatedCombustivelRoute =
+  AuthenticatedCombustivelRouteImport.update({
+    id: '/combustivel',
+    path: '/combustivel',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedCorridasRoute = AuthenticatedCorridasRouteImport.update({
   id: '/corridas',
   path: '/corridas',
@@ -45,43 +55,92 @@ const AuthenticatedDesempenhoRoute = AuthenticatedDesempenhoRouteImport.update({
   path: '/desempenho',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedDespesasRoute = AuthenticatedDespesasRouteImport.update({
+  id: '/despesas',
+  path: '/despesas',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedManutencaoRoute = AuthenticatedManutencaoRouteImport.update({
+  id: '/manutencao',
+  path: '/manutencao',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedTaxasRoute = AuthenticatedTaxasRouteImport.update({
+  id: '/taxas',
+  path: '/taxas',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/combustivel': typeof AuthenticatedCombustivelRoute
   '/corridas': typeof AuthenticatedCorridasRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/desempenho': typeof AuthenticatedDesempenhoRoute
+  '/despesas': typeof AuthenticatedDespesasRoute
+  '/manutencao': typeof AuthenticatedManutencaoRoute
+  '/taxas': typeof AuthenticatedTaxasRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/auth': typeof AuthRoute
+  '/combustivel': typeof AuthenticatedCombustivelRoute
   '/corridas': typeof AuthenticatedCorridasRoute
   '/dashboard': typeof AuthenticatedDashboardRoute
   '/desempenho': typeof AuthenticatedDesempenhoRoute
+  '/despesas': typeof AuthenticatedDespesasRoute
+  '/manutencao': typeof AuthenticatedManutencaoRoute
+  '/taxas': typeof AuthenticatedTaxasRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
   '/auth': typeof AuthRoute
+  '/_authenticated/combustivel': typeof AuthenticatedCombustivelRoute
   '/_authenticated/corridas': typeof AuthenticatedCorridasRoute
   '/_authenticated/dashboard': typeof AuthenticatedDashboardRoute
   '/_authenticated/desempenho': typeof AuthenticatedDesempenhoRoute
+  '/_authenticated/despesas': typeof AuthenticatedDespesasRoute
+  '/_authenticated/manutencao': typeof AuthenticatedManutencaoRoute
+  '/_authenticated/taxas': typeof AuthenticatedTaxasRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/auth' | '/corridas' | '/dashboard' | '/desempenho'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/combustivel'
+    | '/corridas'
+    | '/dashboard'
+    | '/desempenho'
+    | '/despesas'
+    | '/manutencao'
+    | '/taxas'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/auth' | '/corridas' | '/dashboard' | '/desempenho'
+  to:
+    | '/'
+    | '/auth'
+    | '/combustivel'
+    | '/corridas'
+    | '/dashboard'
+    | '/desempenho'
+    | '/despesas'
+    | '/manutencao'
+    | '/taxas'
   id:
     | '__root__'
     | '/'
     | '/_authenticated'
     | '/auth'
+    | '/_authenticated/combustivel'
     | '/_authenticated/corridas'
     | '/_authenticated/dashboard'
     | '/_authenticated/desempenho'
+    | '/_authenticated/despesas'
+    | '/_authenticated/manutencao'
+    | '/_authenticated/taxas'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -113,6 +172,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/_authenticated/combustivel': {
+      id: '/_authenticated/combustivel'
+      path: '/combustivel'
+      fullPath: '/combustivel'
+      preLoaderRoute: typeof AuthenticatedCombustivelRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/corridas': {
       id: '/_authenticated/corridas'
       path: '/corridas'
@@ -134,19 +200,48 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedDesempenhoRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/despesas': {
+      id: '/_authenticated/despesas'
+      path: '/despesas'
+      fullPath: '/despesas'
+      preLoaderRoute: typeof AuthenticatedDespesasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/manutencao': {
+      id: '/_authenticated/manutencao'
+      path: '/manutencao'
+      fullPath: '/manutencao'
+      preLoaderRoute: typeof AuthenticatedManutencaoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/taxas': {
+      id: '/_authenticated/taxas'
+      path: '/taxas'
+      fullPath: '/taxas'
+      preLoaderRoute: typeof AuthenticatedTaxasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
 interface AuthenticatedRouteRouteChildren {
+  AuthenticatedCombustivelRoute: typeof AuthenticatedCombustivelRoute
   AuthenticatedCorridasRoute: typeof AuthenticatedCorridasRoute
   AuthenticatedDashboardRoute: typeof AuthenticatedDashboardRoute
   AuthenticatedDesempenhoRoute: typeof AuthenticatedDesempenhoRoute
+  AuthenticatedDespesasRoute: typeof AuthenticatedDespesasRoute
+  AuthenticatedManutencaoRoute: typeof AuthenticatedManutencaoRoute
+  AuthenticatedTaxasRoute: typeof AuthenticatedTaxasRoute
 }
 
 const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedCombustivelRoute: AuthenticatedCombustivelRoute,
   AuthenticatedCorridasRoute: AuthenticatedCorridasRoute,
   AuthenticatedDashboardRoute: AuthenticatedDashboardRoute,
   AuthenticatedDesempenhoRoute: AuthenticatedDesempenhoRoute,
+  AuthenticatedDespesasRoute: AuthenticatedDespesasRoute,
+  AuthenticatedManutencaoRoute: AuthenticatedManutencaoRoute,
+  AuthenticatedTaxasRoute: AuthenticatedTaxasRoute,
 }
 
 const AuthenticatedRouteRouteWithChildren =
