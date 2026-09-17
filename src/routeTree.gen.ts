@@ -18,6 +18,11 @@ import { Route as AuthenticatedDashboardRouteImport } from './routes/_authentica
 import { Route as AuthenticatedDesempenhoRouteImport } from './routes/_authenticated/desempenho'
 import { Route as AuthenticatedDespesasRouteImport } from './routes/_authenticated/despesas'
 import { Route as AuthenticatedManutencaoRouteImport } from './routes/_authenticated/manutencao'
+import { Route as AuthenticatedMetasRouteImport } from './routes/_authenticated/metas'
+import { Route as AuthenticatedOnboardingRouteImport } from './routes/_authenticated/onboarding'
+import { Route as AuthenticatedPerfilRouteImport } from './routes/_authenticated/perfil'
+import { Route as AuthenticatedProdutosRouteImport } from './routes/_authenticated/produtos'
+import { Route as AuthenticatedRelatoriosRouteImport } from './routes/_authenticated/relatorios'
 import { Route as AuthenticatedTaxasRouteImport } from './routes/_authenticated/taxas'
 
 const IndexRoute = IndexRouteImport.update({
@@ -65,6 +70,31 @@ const AuthenticatedManutencaoRoute = AuthenticatedManutencaoRouteImport.update({
   path: '/manutencao',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedMetasRoute = AuthenticatedMetasRouteImport.update({
+  id: '/metas',
+  path: '/metas',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedOnboardingRoute = AuthenticatedOnboardingRouteImport.update({
+  id: '/onboarding',
+  path: '/onboarding',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedPerfilRoute = AuthenticatedPerfilRouteImport.update({
+  id: '/perfil',
+  path: '/perfil',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedProdutosRoute = AuthenticatedProdutosRouteImport.update({
+  id: '/produtos',
+  path: '/produtos',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedRelatoriosRoute = AuthenticatedRelatoriosRouteImport.update({
+  id: '/relatorios',
+  path: '/relatorios',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
 const AuthenticatedTaxasRoute = AuthenticatedTaxasRouteImport.update({
   id: '/taxas',
   path: '/taxas',
@@ -80,6 +110,11 @@ export interface FileRoutesByFullPath {
   '/desempenho': typeof AuthenticatedDesempenhoRoute
   '/despesas': typeof AuthenticatedDespesasRoute
   '/manutencao': typeof AuthenticatedManutencaoRoute
+  '/metas': typeof AuthenticatedMetasRoute
+  '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/perfil': typeof AuthenticatedPerfilRoute
+  '/produtos': typeof AuthenticatedProdutosRoute
+  '/relatorios': typeof AuthenticatedRelatoriosRoute
   '/taxas': typeof AuthenticatedTaxasRoute
 }
 export interface FileRoutesByTo {
@@ -91,6 +126,11 @@ export interface FileRoutesByTo {
   '/desempenho': typeof AuthenticatedDesempenhoRoute
   '/despesas': typeof AuthenticatedDespesasRoute
   '/manutencao': typeof AuthenticatedManutencaoRoute
+  '/metas': typeof AuthenticatedMetasRoute
+  '/onboarding': typeof AuthenticatedOnboardingRoute
+  '/perfil': typeof AuthenticatedPerfilRoute
+  '/produtos': typeof AuthenticatedProdutosRoute
+  '/relatorios': typeof AuthenticatedRelatoriosRoute
   '/taxas': typeof AuthenticatedTaxasRoute
 }
 export interface FileRoutesById {
@@ -104,6 +144,11 @@ export interface FileRoutesById {
   '/_authenticated/desempenho': typeof AuthenticatedDesempenhoRoute
   '/_authenticated/despesas': typeof AuthenticatedDespesasRoute
   '/_authenticated/manutencao': typeof AuthenticatedManutencaoRoute
+  '/_authenticated/metas': typeof AuthenticatedMetasRoute
+  '/_authenticated/onboarding': typeof AuthenticatedOnboardingRoute
+  '/_authenticated/perfil': typeof AuthenticatedPerfilRoute
+  '/_authenticated/produtos': typeof AuthenticatedProdutosRoute
+  '/_authenticated/relatorios': typeof AuthenticatedRelatoriosRoute
   '/_authenticated/taxas': typeof AuthenticatedTaxasRoute
 }
 export interface FileRouteTypes {
@@ -117,6 +162,11 @@ export interface FileRouteTypes {
     | '/desempenho'
     | '/despesas'
     | '/manutencao'
+    | '/metas'
+    | '/onboarding'
+    | '/perfil'
+    | '/produtos'
+    | '/relatorios'
     | '/taxas'
   fileRoutesByTo: FileRoutesByTo
   to:
@@ -128,6 +178,11 @@ export interface FileRouteTypes {
     | '/desempenho'
     | '/despesas'
     | '/manutencao'
+    | '/metas'
+    | '/onboarding'
+    | '/perfil'
+    | '/produtos'
+    | '/relatorios'
     | '/taxas'
   id:
     | '__root__'
@@ -140,6 +195,11 @@ export interface FileRouteTypes {
     | '/_authenticated/desempenho'
     | '/_authenticated/despesas'
     | '/_authenticated/manutencao'
+    | '/_authenticated/metas'
+    | '/_authenticated/onboarding'
+    | '/_authenticated/perfil'
+    | '/_authenticated/produtos'
+    | '/_authenticated/relatorios'
     | '/_authenticated/taxas'
   fileRoutesById: FileRoutesById
 }
@@ -214,6 +274,41 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AuthenticatedManutencaoRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
+    '/_authenticated/metas': {
+      id: '/_authenticated/metas'
+      path: '/metas'
+      fullPath: '/metas'
+      preLoaderRoute: typeof AuthenticatedMetasRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/onboarding': {
+      id: '/_authenticated/onboarding'
+      path: '/onboarding'
+      fullPath: '/onboarding'
+      preLoaderRoute: typeof AuthenticatedOnboardingRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/perfil': {
+      id: '/_authenticated/perfil'
+      path: '/perfil'
+      fullPath: '/perfil'
+      preLoaderRoute: typeof AuthenticatedPerfilRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/produtos': {
+      id: '/_authenticated/produtos'
+      path: '/produtos'
+      fullPath: '/produtos'
+      preLoaderRoute: typeof AuthenticatedProdutosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/relatorios': {
+      id: '/_authenticated/relatorios'
+      path: '/relatorios'
+      fullPath: '/relatorios'
+      preLoaderRoute: typeof AuthenticatedRelatoriosRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
     '/_authenticated/taxas': {
       id: '/_authenticated/taxas'
       path: '/taxas'
@@ -231,6 +326,11 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedDesempenhoRoute: typeof AuthenticatedDesempenhoRoute
   AuthenticatedDespesasRoute: typeof AuthenticatedDespesasRoute
   AuthenticatedManutencaoRoute: typeof AuthenticatedManutencaoRoute
+  AuthenticatedMetasRoute: typeof AuthenticatedMetasRoute
+  AuthenticatedOnboardingRoute: typeof AuthenticatedOnboardingRoute
+  AuthenticatedPerfilRoute: typeof AuthenticatedPerfilRoute
+  AuthenticatedProdutosRoute: typeof AuthenticatedProdutosRoute
+  AuthenticatedRelatoriosRoute: typeof AuthenticatedRelatoriosRoute
   AuthenticatedTaxasRoute: typeof AuthenticatedTaxasRoute
 }
 
@@ -241,6 +341,11 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedDesempenhoRoute: AuthenticatedDesempenhoRoute,
   AuthenticatedDespesasRoute: AuthenticatedDespesasRoute,
   AuthenticatedManutencaoRoute: AuthenticatedManutencaoRoute,
+  AuthenticatedMetasRoute: AuthenticatedMetasRoute,
+  AuthenticatedOnboardingRoute: AuthenticatedOnboardingRoute,
+  AuthenticatedPerfilRoute: AuthenticatedPerfilRoute,
+  AuthenticatedProdutosRoute: AuthenticatedProdutosRoute,
+  AuthenticatedRelatoriosRoute: AuthenticatedRelatoriosRoute,
   AuthenticatedTaxasRoute: AuthenticatedTaxasRoute,
 }
 
